@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg0: #fafafa;
+  --bg1: #f4f4f5;
+  --text: rgba(15, 23, 42, 0.96);
+  --muted: rgba(51, 65, 85, 0.92);
+  --border: rgba(15, 23, 42, 0.1);
+  --accent: #6d28d9;
+  --accent2: #0369a1;
+  --danger: #e11d48;
+  --card: #ffffff;
+  /** Sticky TopNav: mobile two-row ~5.5–6rem; md+ single row */
+  --scroll-pad-top: 6rem;
+  --scroll-pad-top-md: 4.75rem;
+
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .heading-page {
+    @apply text-4xl md:text-5xl font-semibold text-slate-950 tracking-tight leading-[1.1];
+  }
+  .heading-hero {
+    @apply text-4xl sm:text-5xl md:text-[2.75rem] font-bold text-slate-900 tracking-tight leading-tight;
+  }
+  .text-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-slate-600;
+  }
+  .text-eyebrow-muted {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500;
+  }
+  .text-lead {
+    @apply text-lg text-slate-700 leading-relaxed;
+  }
+  .text-body {
+    @apply text-base text-slate-700 leading-relaxed;
+  }
+  /** Vertical rhythm between major home sections */
+  .section-block {
+    @apply border-t border-slate-200/90 bg-white pt-20 pb-16 md:pt-28 md:pb-20;
+  }
+
+  /** Tighter stacks — supporting sections in a story flow */
+  .section-block-tight {
+    @apply border-t border-slate-200/90 pt-16 pb-16 md:pt-20 md:pb-20;
+  }
+
+  /** Smaller than .heading-page — breadth / credibility sections */
+  .heading-support {
+    @apply text-3xl font-semibold tracking-tight text-slate-900 md:text-[2.125rem] md:leading-[1.12];
+  }
+
+  /** Primary work anchor — larger than global page headings */
+  .heading-projects {
+    @apply text-5xl font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl md:leading-[1.05];
+  }
+}
+
+@keyframes systems-built-spotlight {
+  0% {
+    box-shadow:
+      inset 0 0 0 0 transparent,
+      0 0 0 0 rgba(109, 40, 217, 0),
+      0 0 0 0 rgba(139, 92, 246, 0);
+  }
+  14% {
+    box-shadow:
+      inset 0 0 0 2px rgba(139, 92, 246, 0.65),
+      0 0 0 1px rgba(167, 139, 250, 0.35),
+      0 8px 32px -8px rgba(109, 40, 217, 0.22),
+      0 0 56px -8px rgba(139, 92, 246, 0.38);
+  }
+  22% {
+    box-shadow:
+      inset 0 0 0 3px rgba(139, 92, 246, 0.5),
+      0 0 0 2px rgba(196, 181, 253, 0.45),
+      0 36px 88px -20px rgba(109, 40, 217, 0.42),
+      0 0 80px -12px rgba(139, 92, 246, 0.32);
+  }
+  40% {
+    box-shadow:
+      inset 0 0 0 1px rgba(139, 92, 246, 0.38),
+      0 0 0 1px rgba(139, 92, 246, 0.12),
+      0 18px 48px -14px rgba(109, 40, 217, 0.2),
+      0 0 40px -16px rgba(139, 92, 246, 0.14);
+  }
+  100% {
+    box-shadow:
+      inset 0 0 0 0 transparent,
+      0 0 0 0 rgba(109, 40, 217, 0),
+      0 0 0 0 rgba(139, 92, 246, 0);
+  }
+}
+
+.systems-built-spotlight {
+  animation: systems-built-spotlight 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .systems-built-spotlight {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    box-shadow: inset 0 0 0 2px rgba(139, 92, 246, 0.45);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  min-height: 100%;
+}
+
+/** Offset fixed/sticky TopNav when scrolling to in-page anchors (hash + scrollIntoView). */
+:where(section, details)[id] {
+  scroll-margin-top: var(--scroll-pad-top);
+}
+
+@media (min-width: 768px) {
+  :where(section, details)[id] {
+    scroll-margin-top: var(--scroll-pad-top-md);
+  }
+}
+
+@keyframes telemetry-cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.telemetry-cursor-blink {
+  animation: telemetry-cursor-blink 1.05s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .telemetry-cursor-blink {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+  color: var(--text);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+::selection {
+  background: rgba(91, 33, 182, 0.18);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
