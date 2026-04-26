@@ -84,7 +84,7 @@ function projectFromBuild(b: PortfolioProjectBuild): Project {
   return { ...core, ...m, id: c.id, techStack: [...c.tech], featured: c.featured }
 }
 
-/** Order preserved: homepage shows first five `featured` projects; the rest roll into “More Systems”. */
+/** Order preserved: first six `featured` projects render in Featured Systems; non-featured roll into “More Systems”. */
 export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
   {
     config: {
@@ -123,7 +123,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
     },
     merge: {
       title: 'mycareer-ai',
-      displayTitle: 'MyCareer AI – Resume Intelligence & Career Mentorship Platform',
+      displayTitle: 'MyCareer AI – Resume Intelligence Platform',
       repoSlug: 'mycareer-ai',
       category: 'Backend',
       levelRequired: 2,
@@ -153,7 +153,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       ],
     },
     merge: {
-      displayTitle: 'Certificate Verification System (Public API)',
+      displayTitle: 'Certificate Verification System',
       repoSlug: 'certificate-verification',
       demo: 'https://certificate.microdegree.in/',
       demoLabel: 'Demo',
@@ -185,26 +185,28 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
     config: {
       id: 'automated-email-job',
       title: 'automated-email-job',
-      description: 'Outbound pipelines with Gmail/SMTP, quotas, threading, follow-ups.',
+      description:
+        'Placement and candidate outreach automation — batched sends, templates, delivery tracking, and campaign state across touchpoints.',
       tech: ['Python', 'Gmail API', 'SMTP', 'SQLite', 'React'],
       github: 'https://github.com/habinrahman/automated-email-job',
       live: '',
       status: 'production',
       featured: true,
-      type: 'Automation System',
-      problem: 'Manual outreach loses state across campaigns at scale.',
-      solution: 'CSV-driven sends with quotas, tracking, and scheduled follow-ups.',
-      impact: 'Repeatable email operations with observable delivery state.',
+      type: 'Automation Platform',
+      problem: 'Placement teams lose visibility when outreach is fragmented across channels and manual spreadsheets.',
+      solution:
+        'Centralized automation for placement outreach with batching, provider integration, and repeatable delivery pipelines.',
+      impact: 'Higher throughput placement outreach with consistent tracking and fewer manual loops.',
       features: [
-        'Batched sends with quota-aware throttling',
-        'Thread-aware reply detection',
-        'Follow-up scheduler (e.g. 0/7/14/21 days)',
+        'Quota-aware batching and scheduling for outreach waves',
+        'Delivery and reply tracking tied to campaign state',
+        'Repeatable pipelines from CSV intake through follow-ups',
       ],
     },
     merge: {
-      displayTitle: 'Automated Email Job (Pipeline System)',
+      displayTitle: 'Placement Outreach Automation Platform',
       repoSlug: 'automated-email-job',
-      tagline: 'Email automation at scale — batched sends, tracking, follow-ups.',
+      tagline: 'Placement and candidate outreach at scale — batched sends, tracking, and follow-ups.',
       impact: [
         { metric: 'Operational', description: 'Repeatable runs with observable delivery state.' },
         { metric: 'Throughput', description: 'Higher send volume without manual babysitting.' },
@@ -241,7 +243,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       ],
     },
     merge: {
-      displayTitle: 'Competition Tracker (REST API)',
+      displayTitle: 'Competition Tracker',
       repoSlug: 'competition-tracker',
       tagline: 'Competition workflows and persistence with clear service boundaries.',
       impact: [
@@ -257,6 +259,48 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
   },
   {
     config: {
+      id: 'ai-job-application-tracker',
+      title: 'ai-job-application-tracker',
+      description:
+        'AI-powered job application intelligence — Gmail sync, classification, pipeline tracking, and analytics in one place.',
+      tech: ['Python', 'Gmail API', 'OpenAI', 'PostgreSQL', 'FastAPI'],
+      github: 'https://github.com/habinrahman/ai-job-application-tracker',
+      live: '',
+      status: 'production',
+      featured: true,
+      type: 'AI-Powered Platform',
+      problem:
+        'Managing job applications across emails, statuses and follow-ups is fragmented and manual.',
+      solution:
+        'Built an AI-powered job application intelligence platform using Gmail sync, classification, pipeline tracking and analytics.',
+      impact: 'Single-pane visibility across applications, stages, and follow-ups.',
+      features: [
+        'Gmail sync with AI-assisted thread classification',
+        'Pipeline tracking for statuses, owners, and next actions',
+        'Analytics on volume, conversion, and response times',
+      ],
+    },
+    merge: {
+      displayTitle: 'AI Job Application Tracker',
+      repoSlug: 'ai-job-application-tracker',
+      tagline: 'Gmail-backed application intelligence with classification, pipeline tracking, and analytics.',
+      category: 'Systems',
+      impact: [
+        { metric: 'Visibility', description: 'Applications and stages in one operational view.' },
+        { metric: 'Throughput', description: 'Less manual triage across email and spreadsheets.' },
+      ],
+      engineeringDecisions: [
+        'Gmail as the system of record for inbound applications.',
+        'Classification and pipeline layers separated for iteration.',
+      ],
+      tradeoffs: ['Provider quotas and OAuth scopes require careful pacing.'],
+      architectureOverview: ['Gmail → Classification → Pipeline → Analytics'],
+      levelRequired: 3,
+      xpReward: 260,
+    },
+  },
+  {
+    config: {
       id: 'finguard',
       title: 'FinGuard',
       description: 'Guard-rail style rules — APIs, validation, secure defaults.',
@@ -265,7 +309,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       live: '',
       status: 'running',
       featured: true,
-      type: 'Backend Service',
+      type: 'Financial API Platform',
       problem: 'Sensitive flows need strict validation and traceable server decisions.',
       solution: 'Typed validation, transactional persistence, narrow public surface.',
       impact: 'Failures fail closed with reproducible containerized deploys.',
@@ -276,7 +320,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       ],
     },
     merge: {
-      displayTitle: 'FinGuard (Validation Layer)',
+      displayTitle: 'FinGuard (Financial API Platform)',
       repoSlug: 'FinGuard',
       tagline: 'Financial-style guard rails with explicit validation and persistence.',
       impact: [
@@ -299,7 +343,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       github: 'https://github.com/habinrahman/INTRUDER-DETECTION',
       live: '',
       status: 'production',
-      featured: true,
+      featured: false,
       type: 'Automation System',
       problem: 'Recording alone does not notify when a threat pattern appears.',
       solution: 'Frame pipeline, triggers, evidence capture, email alerts.',

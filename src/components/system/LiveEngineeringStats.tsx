@@ -69,10 +69,15 @@ export function LiveSystemPulse({ className }: { className?: string }) {
 
 export default function LiveEngineeringStats({ className, compact }: LiveEngineeringStatsProps) {
   const { portfolio, projects } = usePortfolioStore()
+  const { stats: st } = portfolio
   const live = useLiveMetrics()
   const github = useGithubProjects(portfolio.profile.githubUsername)
   const fallbackProjectsBuilt = projects.length
-  const projectsBuiltCap = github.status === 'ready' && github.repoCount !== null ? github.repoCount : fallbackProjectsBuilt
+  const computedProjectsBuiltCap =
+    github.status === 'ready' && github.repoCount !== null ? github.repoCount : fallbackProjectsBuilt
+  const explicitCap = st.projectsBuiltHeroCap
+  const projectsBuiltCap =
+    typeof explicitCap === 'number' && explicitCap > 0 ? explicitCap : computedProjectsBuiltCap
 
   const [displayP, setDisplayP] = useState(0)
   const [displayS, setDisplayS] = useState(0)
@@ -109,8 +114,6 @@ export default function LiveEngineeringStats({ className, compact }: LiveEnginee
     setDisplayP(projectsBuiltCap)
     setDisplayS(live.systemsDeployed)
   }, [introDone, live.systemsDeployed, live.tick, projectsBuiltCap])
-
-  const { stats: st } = portfolio
 
   const metricCards = [
     {

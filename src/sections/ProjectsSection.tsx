@@ -9,7 +9,7 @@ import { LiveSystemPulse } from '../components/system/LiveEngineeringStats'
 import { scrollElementIntoView } from '../utils/scrollToId'
 import { ProjectCard } from '../components/projects/ProjectShowcaseCards'
 
-const HOMEPAGE_FEATURED_LIMIT = 5
+const HOMEPAGE_FEATURED_LIMIT = 6
 
 type Props = {
   exploreDetailsRef?: RefObject<HTMLDetailsElement | null>

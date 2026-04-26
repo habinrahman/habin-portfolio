@@ -282,7 +282,9 @@ $ `,
   ] as const satisfies readonly CertificationItem[],
 
   stats: {
-    projectsBuiltLabel: 'Projects built',
+    projectsBuiltLabel: 'Systems built',
+    /** When set, first telemetry card counts up to this floor (e.g. public ships beyond listed repos). */
+    projectsBuiltHeroCap: 20,
     systemsDeployedLabel: 'Systems deployed',
     automationsTitle: 'Automations',
     automationsBody: 'Automations running on a schedule — hands off.',
