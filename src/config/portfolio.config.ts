@@ -324,6 +324,32 @@ $ `,
     eyebrow: 'Extra',
     title: 'Progress & unlocks',
     description: 'XP and deeper case studies — opt-in.',
+    /**
+     * XP / case-study unlock graph: `id` values must match `PROJECTS[].id` in `portfolio.projects.build.ts`.
+     * Node labels use each project’s `displayTitle` in the UI (not slugs).
+     */
+    unlockGraph: {
+      nodes: [
+        { id: 'mycareer-ai', x: 50, y: 10 },
+        { id: 'certificate-system', x: 22, y: 34 },
+        { id: 'automated-email-job', x: 78, y: 34 },
+        { id: 'competition-tracker', x: 50, y: 56 },
+        { id: 'ai-job-application-tracker', x: 28, y: 76 },
+        { id: 'finguard', x: 72, y: 76 },
+      ],
+      edges: [
+        ['mycareer-ai', 'certificate-system'],
+        ['mycareer-ai', 'automated-email-job'],
+        ['certificate-system', 'automated-email-job'],
+        ['certificate-system', 'competition-tracker'],
+        ['automated-email-job', 'finguard'],
+        ['competition-tracker', 'ai-job-application-tracker'],
+        ['finguard', 'ai-job-application-tracker'],
+        ['automated-email-job', 'competition-tracker'],
+        ['certificate-system', 'ai-job-application-tracker'],
+        ['mycareer-ai', 'competition-tracker'],
+      ],
+    },
   },
 
   footer: {

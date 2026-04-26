@@ -4,6 +4,7 @@ import Card from '../components/ui/Card'
 import { scrollToId } from '../utils/scrollToId'
 import { usePortfolioProgress } from '../state/usePortfolioProgress'
 import { usePortfolioStore } from '../state/usePortfolioStore'
+import { projectDisplayTitle } from '../components/projects/projectCardHighlights'
 
 type Props = {
   /** When true, omits outer section heading (used inside &lt;details&gt;). */
@@ -18,39 +19,18 @@ function openProjectOnHomePage(projectId: string) {
 }
 
 export default function ExploreWorkSection({ embedded = false }: Props) {
-  const { projects: PROJECTS } = usePortfolioStore()
+  const { portfolio, projects: PROJECTS } = usePortfolioStore()
   const { unlockProject, isProjectUnlocked, level, totalXp, levelProgress } = usePortfolioProgress()
   const [toast, setToast] = useState<string | null>(null)
 
+  const unlockGraph = portfolio.explore.unlockGraph
+
   const nodeLayout = useMemo(() => {
     const byId = new Map(PROJECTS.map((p) => [p.id, p]))
-    const nodes = [
-      { id: 'mycareer-ai', x: 50, y: 10 },
-      { id: 'certificate-system', x: 22, y: 34 },
-      { id: 'automated-email-job', x: 78, y: 34 },
-      { id: 'competition-tracker', x: 50, y: 56 },
-      { id: 'finguard', x: 24, y: 80 },
-      { id: 'intruder-detector', x: 76, y: 80 },
-    ].filter((n) => byId.has(n.id))
-    return nodes
-  }, [PROJECTS])
+    return unlockGraph.nodes.filter((n) => byId.has(n.id))
+  }, [PROJECTS, unlockGraph.nodes])
 
-  const lines = useMemo(
-    () =>
-      [
-        ['mycareer-ai', 'certificate-system'],
-        ['mycareer-ai', 'automated-email-job'],
-        ['certificate-system', 'automated-email-job'],
-        ['certificate-system', 'competition-tracker'],
-        ['automated-email-job', 'finguard'],
-        ['competition-tracker', 'intruder-detector'],
-        ['finguard', 'intruder-detector'],
-        ['automated-email-job', 'competition-tracker'],
-        ['certificate-system', 'intruder-detector'],
-        ['mycareer-ai', 'competition-tracker'],
-      ] as Array<[string, string]>,
-    [],
-  )
+  const lines = useMemo(() => [...unlockGraph.edges] as Array<[string, string]>, [unlockGraph.edges])
 
   const getNode = (id: string) => nodeLayout.find((n) => n.id === id)
 
@@ -149,7 +129,9 @@ export default function ExploreWorkSection({ embedded = false }: Props) {
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
                     <div className="text-[10px] font-medium text-slate-500 truncate">{project.category}</div>
-                    <div className="mt-0.5 text-xs font-bold text-slate-900 leading-snug line-clamp-2">{project.title}</div>
+                    <div className="mt-0.5 text-xs font-bold text-slate-900 leading-snug line-clamp-2">
+                      {projectDisplayTitle(project)}
+                    </div>
                   </div>
                   <div className="shrink-0 text-[10px] font-semibold text-slate-700">{unlocked ? '✓' : `L${project.levelRequired}`}</div>
                 </div>
