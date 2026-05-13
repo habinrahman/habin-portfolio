@@ -28,7 +28,8 @@ export type TechStackEntry = { id: string; label: string }
 export const portfolioConfig = {
   meta: {
     title: 'Habin Rahman | Backend Systems & Cloud Automation Engineer',
-    description: 'Backend systems and cloud automation. I build systems that run.',
+    description:
+      'Backend systems, TypeScript & Node.js services, AI workflows, and cloud automation — Docker, CI/CD, and production infra.',
   },
 
   /** Profile image (place `public/headshot.png` or change `src`) */
@@ -50,6 +51,7 @@ export const portfolioConfig = {
       { label: 'Projects', path: '/', hash: 'projects' },
       { label: 'Telemetry', path: '/', hash: 'telemetry' },
       { label: 'Engineering', path: '/', hash: 'engineering' },
+      { label: 'AI workflows', path: '/', hash: 'ai-workflow-systems' },
       { label: 'Certs', path: '/', hash: 'certs' },
       { label: 'Approach', path: '/', hash: 'from-problem-to-system' },
       { label: 'Work with me', path: '/', hash: 'work-with-me' },
@@ -115,15 +117,18 @@ export const portfolioConfig = {
     secondarySectionLabel: 'Secondary',
     primary: [
       { id: 'fastapi', label: 'FastAPI' },
+      { id: 'typescript', label: 'TypeScript' },
+      { id: 'nodejs', label: 'Node.js' },
       { id: 'supabase', label: 'Supabase' },
       { id: 'postgres', label: 'PostgreSQL' },
       { id: 'docker', label: 'Docker' },
-      { id: 'aws', label: 'AWS' },
     ] as const satisfies readonly TechStackEntry[],
     secondary: [
-      { id: 'mysql', label: 'MySQL' },
+      { id: 'nuxt', label: 'Nuxt' },
+      { id: 'vue', label: 'Vue' },
       { id: 'react', label: 'React' },
-      { id: 'java', label: 'Java' },
+      { id: 'mysql', label: 'MySQL' },
+      { id: 'aws', label: 'AWS' },
       { id: 'spring', label: 'Spring Boot' },
     ] as const satisfies readonly TechStackEntry[],
   },
@@ -138,12 +143,32 @@ export const portfolioConfig = {
       },
       {
         title: 'Infrastructure',
-        items: ['Dockerized services', 'AWS / DO, cron & workers'],
+        items: [
+          'Dockerized services & containers',
+          'DigitalOcean & Render deploy targets',
+          'CI/CD with GitHub Actions',
+          'Cron jobs, queues & background workers',
+        ],
       },
       {
         title: 'Systems Thinking',
         items: ['Retries, idempotency, failure modes', 'Logging, metrics, pipelines'],
       },
+    ],
+  },
+
+  /** Agent-style AI patterns — LangGraph-class orchestration, retrieval, async pipelines */
+  aiWorkflowSystems: {
+    heading: 'AI workflow systems',
+    subheading:
+      'LLM orchestration, classification, and durable async execution — aligned with modern agentic stacks (e.g. LangGraph-style workflows).',
+    items: [
+      'LLM orchestration',
+      'AI-assisted classification',
+      'automated decision pipelines',
+      'async processing workflows',
+      'OpenAI integrations',
+      'vector search & retrieval',
     ],
   },
 

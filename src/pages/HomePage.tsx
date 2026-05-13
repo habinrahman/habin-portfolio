@@ -14,6 +14,7 @@ import { useCommandPaletteHotkeys } from '../hooks/useCommandPaletteHotkeys'
 import AuthorityStripSection from '../sections/AuthorityStripSection'
 import CertificationsSection from '../sections/CertificationsSection'
 import ContactSection from '../sections/ContactSection'
+import AiWorkflowSystemsSection from '../sections/AiWorkflowSystemsSection'
 import EngineeringStackSystemsSection from '../sections/EngineeringStackSystemsSection'
 import ExploreWorkSection from '../sections/ExploreWorkSection'
 import HeroSection from '../sections/HeroSection'
@@ -62,6 +63,7 @@ export default function HomePage() {
           <ProjectsSection exploreDetailsRef={exploreRef} />
           <LiveSystemTelemetrySection />
           <EngineeringStackSystemsSection />
+          <AiWorkflowSystemsSection />
           <CertificationsSection preview />
           <WorkWithMeSection />
           <ContactSection />
