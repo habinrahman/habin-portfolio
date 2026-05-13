@@ -110,6 +110,16 @@ function buildStaticCommands(pc: MutablePortfolioConfig): CommandItem[] {
     badge: 'go',
   },
   {
+    id: 'nav-ai-workflows',
+    kind: 'nav',
+    title: 'go ai workflows',
+    subtitle: 'LLM orchestration · agents · retrieval',
+    sectionId: 'ai-workflow-systems',
+    haystack:
+      'ai workflow systems langgraph agents orchestration llm classification openai vector retrieval async pipelines',
+    badge: 'go',
+  },
+  {
     id: 'act-unlock-all',
     kind: 'action',
     title: 'unlock all',

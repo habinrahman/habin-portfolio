@@ -17,7 +17,7 @@ type CardCallbacks = {
 }
 
 function CardMetaLine({ project }: { project: Project }) {
-  const tech = project.techStack.slice(0, 6).join(' · ')
+  const tech = project.techStack.slice(0, 12).join(' · ')
   const type = projectTypeLabel(project)
   return (
     <p className="text-[11px] leading-relaxed text-slate-500 md:text-xs">
