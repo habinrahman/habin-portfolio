@@ -4,6 +4,61 @@ import { usePortfolioStore } from '../../state/usePortfolioStore'
 import { hoverLiftSubtle, springSnappy } from '../../motion/micro'
 
 const ICONS: Record<string, ReactNode> = {
+  typescript: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden>
+      <rect width="24" height="24" rx="3" fill="#3178c6" />
+      <text
+        x="12"
+        y="16.5"
+        textAnchor="middle"
+        fill="#ffffff"
+        fontSize="10"
+        fontWeight="700"
+        fontFamily="system-ui, -apple-system, Segoe UI, sans-serif"
+      >
+        TS
+      </text>
+    </svg>
+  ),
+  nodejs: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" aria-hidden>
+      <path fill="#3e863d" d="M12 22 3 17V7l9-5 9 5v10l-9 5Z" />
+      <path fill="#6bcc6b" d="M12 4.2 5.2 8v8l6.8 3.8L18.8 16V8L12 4.2Z" />
+      <path stroke="#1a3d1a" strokeWidth="1.2" strokeLinecap="round" d="M12 8.5v7M9 10v4M15 10v4" fill="none" />
+    </svg>
+  ),
+  vue: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" aria-hidden>
+      <path d="M2 6h6l4 9 4-9h6l-10 14-10-14Z" fill="#42b883" />
+      <path d="M7.5 7h3.5l1 5.5 1-5.5H17L12 16 7.5 7Z" fill="#35495e" />
+    </svg>
+  ),
+  nuxt: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" aria-hidden>
+      <path
+        fill="#00dc82"
+        d="M14.5 3 21 17h-4.5l-1.2-3H8.7L7.5 17H3L9.5 3h5Zm-1.2 4.5L11 13h4.6l-2.3-5.5Z"
+      />
+    </svg>
+  ),
+  nextjs: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" aria-hidden>
+      <rect width="24" height="24" rx="5" fill="#0a0a0a" />
+      <path
+        fill="#fafafa"
+        d="M8 7h2.5v4.8L15.2 7H18l-5.2 5.4L18.2 17H15l-4.5-4.2V17H8V7Z"
+      />
+    </svg>
+  ),
+  next: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" aria-hidden>
+      <rect width="24" height="24" rx="5" fill="#0a0a0a" />
+      <path
+        fill="#fafafa"
+        d="M8 7h2.5v4.8L15.2 7H18l-5.2 5.4L18.2 17H15l-4.5-4.2V17H8V7Z"
+      />
+    </svg>
+  ),
   fastapi: (
     <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" aria-hidden>
       <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="#0ea5e9" />
