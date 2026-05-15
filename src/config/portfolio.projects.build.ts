@@ -3,13 +3,13 @@ import type { Project, ProjectImpact, VerificationProof } from '../data/types'
 /** Microdegree live certificate — shared by Certificate project + Certifications section. */
 export const certificateLiveVerificationProof: VerificationProof = {
   sectionTitle: 'Real-world verification example',
-  lead: 'This certificate is verified through a public endpoint — similar to how modern platforms validate credentials at scale.',
+  lead: 'This certificate is verified through a public endpoint similar to how modern platforms validate credentials at scale.',
   ctaLabel: 'Verify Live Certificate',
   ctaUrl: 'https://certificate.microdegree.in/cert/DOEC-11146',
-  ctaMicrocopy: 'Public verification endpoint — not a static document.',
-  supporting: 'Used by thousands — each certificate is validated via a unique link.',
+  ctaMicrocopy: 'Public verification endpoint not a static document.',
+  supporting: 'Used by thousands, each certificate is validated via a unique link.',
   connection:
-    'My certificate verification system follows the same principle — verifiable records instead of static PDFs.',
+    'My certificate verification system follows the same principle, verifiable records instead of static PDFs.',
   tag: 'Live verification pattern',
 }
 

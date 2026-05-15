@@ -83,7 +83,7 @@ export const portfolioConfig = {
     /** Scan-friendly: headline + one supporting line + kicker (no duplicate taglines) */
     lines: {
       h1: 'I build systems that run.',
-      subhead: 'Backends, automation, and cloud operations — built to stay up.',
+      subhead: 'Backends, automation, and cloud operations built to stay up.',
       kicker: '',
     },
     consoleHintLine: '> Explore the system → Ctrl + K',
@@ -135,7 +135,7 @@ export const portfolioConfig = {
 
   engineeringStack: {
     heading: 'Engineering stack & systems',
-    subheading: 'Design, deploy, operate — tools support the work.',
+    subheading: 'Design, deploy, operate tools support the work.',
     groups: [
       {
         title: 'Backend',
@@ -161,7 +161,7 @@ export const portfolioConfig = {
   aiWorkflowSystems: {
     heading: 'AI workflow systems',
     subheading:
-      'LLM orchestration, classification, and durable async execution — aligned with modern agentic stacks (e.g. LangGraph-style workflows).',
+      'LLM orchestration, classification, and durable async execution aligned with modern agentic stacks (e.g. LangGraph-style workflows).',
     items: [
       'LLM orchestration',
       'AI-assisted classification',
@@ -189,9 +189,9 @@ export const portfolioConfig = {
 
   liveTelemetry: {
     title: 'Live system telemetry',
-    subtitle: 'Deploy-style logs and health — representative, not a tenant.',
+    subtitle: 'Deploy style logs and health representative, not a tenant.',
     /** Shown above the terminal grid — sets intent before the animated logs */
-    logsIntro: 'Live system telemetry — representative of real service workloads.',
+    logsIntro: 'Live system telemetry  representative of real service workloads.',
     disclaimer: 'Sample output; typical ops monitoring view.',
     terminalTitle: 'Terminal',
     serverTitle: 'Server output',
@@ -228,14 +228,14 @@ $ `,
   /** Section copy + proof blocks (credentials list is `certifications` below) */
   certificationSection: {
     sectionTitle: 'Certifications & Expertise',
-    sectionSubtitle: 'Cloud, security, delivery — tied to shipped systems.',
+    sectionSubtitle: 'Cloud, security, delivery tied to shipped systems.',
     viewAllOnPageLabel: 'Open full page',
     viewAllOnPagePath: '/certifications',
     /** Homepage preview: CTA below the grid */
     previewViewAllLabel: 'View all certifications →',
     appliedInSystems: ['Outreach automation', 'Certificate verification', 'Intrusion detection'],
     verificationProof: certificateLiveVerificationProof,
-    footerTagline: 'Credential-backed — applied work, not coursework only.',
+    footerTagline: 'Credential-backed applied work, not coursework only.',
     appliedHeading: 'Applied in',
     modalTitle: 'Certifications',
   },
@@ -313,7 +313,7 @@ $ `,
     projectsBuiltHeroCap: 20,
     systemsDeployedLabel: 'Systems deployed',
     automationsTitle: 'Automations',
-    automationsBody: 'Automations running on a schedule — hands off.',
+    automationsBody: 'Automations running on a schedule hands off.',
   },
 
   problemToSystem: {
@@ -328,7 +328,7 @@ $ `,
   workWithMe: {
     heading: 'For teams that need systems that stay up.',
     bullets: ['Real load, not demo data', 'Automation instead of manual loops', 'Always-on operations'],
-    ctaLead: "If you're building something real — let's talk.\nSystems should run.",
+    ctaLead: "If you're building something real let's talk.\nSystems should run.",
     ctaBold: '',
     button: 'Get in touch',
   },
