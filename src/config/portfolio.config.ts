@@ -104,7 +104,7 @@ export const portfolioConfig = {
 
   whatIDo: {
     heading: 'What I do',
-    body: ['Backend systems that handle real workloads — not demos.'],
+    body: ['Backend systems that handle real workloads, not demos.'],
     liveTelemetryLabel: 'Live telemetry',
     activeReposLine: 'Active GitHub projects',
     footerLineBeforeGithub: 'Backend, automation, AI —',
