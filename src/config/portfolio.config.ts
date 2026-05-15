@@ -246,11 +246,11 @@ $ `,
    */
   certifications: [
     {
-      id: 'aws-solutions-architect',
-      title: 'AWS Solutions Architect - Amazon Web Services ',
-      org: 'MicroDegree',
-      image: '/credentials/aws.jpeg',
-      category: 'Cloud',
+      id: 'cybersecurity-mastercard',
+      title: 'Cybersecurity',
+      org: 'Mastercard',
+      image: '/credentials/cyb.jpeg',
+      category: 'Security',
     },
     {
       id: 'ea-software-simulation',
@@ -297,12 +297,13 @@ $ `,
       category: 'Cloud',
     },
     {
-      id: 'cybersecurity-mastercard',
-      title: 'Cybersecurity',
-      org: 'Mastercard',
-      image: '/credentials/cyb.jpeg',
-      category: 'Security',
+      id: 'aws-solutions-architect',
+      title: 'AWS Solutions Architect - Amazon Web Services ',
+      org: 'MicroDegree',
+      image: '/credentials/aws.jpeg',
+      category: 'Cloud',
     },
+   
     
   ] as const satisfies readonly CertificationItem[],
 
