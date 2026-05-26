@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useState, type RefObject } from 'react'
-import { Link } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 import type { Project } from '../data/types'
 import { usePortfolioProgress } from '../state/usePortfolioProgress'
 import { usePortfolioStore } from '../state/usePortfolioStore'
 import ProjectModal from '../components/projects/ProjectModal'
-import CompactProjectCard from '../components/projects/CompactProjectCard'
 import { LiveSystemPulse } from '../components/system/LiveEngineeringStats'
 import { scrollElementIntoView } from '../utils/scrollToId'
 import { ProjectCard } from '../components/projects/ProjectShowcaseCards'
@@ -23,7 +22,8 @@ type ProjectsSectionCopy = {
   moreSubtitle?: string
   supporting?: string
   unlockHintToast: string
-  viewAllSystemsLabel?: string
+  moreCollapsedLabel?: string
+  moreExpandedLabel?: string
 }
 
 export default function ProjectsSection({ exploreDetailsRef }: Props) {
@@ -32,6 +32,7 @@ export default function ProjectsSection({ exploreDetailsRef }: Props) {
   const { isProjectUnlocked } = usePortfolioProgress()
   const [active, setActive] = useState<Project | null>(null)
   const [toast, setToast] = useState<string | null>(null)
+  const [moreOpen, setMoreOpen] = useState(false)
 
   useEffect(() => {
     const onFocusProject = (e: Event) => {
@@ -77,7 +78,8 @@ export default function ProjectsSection({ exploreDetailsRef }: Props) {
   const moreHeading = ps.moreHeading ?? 'More Systems & Experiments'
   const moreSubtitle =
     ps.moreSubtitle ?? 'Additional builds, experiments, and supporting work.'
-  const viewAllLabel = ps.viewAllSystemsLabel ?? 'View All Systems →'
+  const moreCollapsedLabel = ps.moreCollapsedLabel ?? 'Show More Projects'
+  const moreExpandedLabel = ps.moreExpandedLabel ?? 'Hide More Projects'
 
   return (
     <section
@@ -114,36 +116,45 @@ export default function ProjectsSection({ exploreDetailsRef }: Props) {
           <h3 className="heading-projects text-[clamp(1.25rem,2.5vw,1.75rem)] leading-tight">{moreHeading}</h3>
           <p className="mt-5 max-w-2xl text-base font-medium text-slate-800 md:mt-6 md:text-lg">{moreSubtitle}</p>
 
-          <ul
-            className="mt-10 grid list-none grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-4"
-            role="list"
+          <button
+            type="button"
+            aria-expanded={moreOpen}
+            aria-controls="more-projects-grid"
+            onClick={() => setMoreOpen((open) => !open)}
+            className="mt-8 inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-violet-400/60 hover:text-violet-900 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/35 focus-visible:ring-offset-2"
           >
-            {moreProjects.map((project) => (
-              <li key={project.id}>
-                <CompactProjectCard project={project} onRequestUnlock={() => onViewProject(project)} />
-              </li>
-            ))}
-          </ul>
+            {moreOpen ? moreExpandedLabel : moreCollapsedLabel}
+          </button>
 
-          <p className="mt-10 text-left">
-            <Link
-              to="/projects"
-              className="text-sm font-semibold text-violet-800 underline-offset-2 hover:text-violet-950 hover:underline md:text-[15px]"
-            >
-              {viewAllLabel}
-            </Link>
-          </p>
+          <AnimatePresence initial={false}>
+            {moreOpen ? (
+              <motion.div
+                id="more-projects-grid"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
+                className="overflow-hidden"
+              >
+                <ul
+                  className="mt-10 grid list-none grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7"
+                  role="list"
+                >
+                  {moreProjects.map((project) => (
+                    <li key={project.id}>
+                      <ProjectCard
+                        project={project}
+                        unlocked={isProjectUnlocked(project.id)}
+                        onViewProject={onViewProject}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
         </div>
-      ) : (
-        <p className="mx-auto mt-12 max-w-6xl text-left">
-          <Link
-            to="/projects"
-            className="text-sm font-semibold text-violet-800 underline-offset-2 hover:text-violet-950 hover:underline md:text-[15px]"
-          >
-            {viewAllLabel}
-          </Link>
-        </p>
-      )}
+      ) : null}
 
       {toast ? (
         <div className="fixed left-1/2 bottom-24 z-[60] max-w-sm -translate-x-1/2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-center text-sm text-slate-800 shadow-card md:bottom-8">

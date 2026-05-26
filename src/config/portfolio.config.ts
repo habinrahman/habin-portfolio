@@ -177,9 +177,10 @@ export const portfolioConfig = {
     featuredHeading: 'Featured Systems',
     featuredSubtitle:
       'Production-grade platforms and automation systems engineered for real-world impact.',
-    moreHeading: 'More Systems & Experiments',
-    moreSubtitle: 'Additional builds, experiments, and supporting work.',
-    viewAllSystemsLabel: 'View All Systems →',
+    moreHeading: 'More Projects',
+    moreSubtitle: 'Additional projects, experiments, and supporting engineering work.',
+    moreCollapsedLabel: 'Show More Projects',
+    moreExpandedLabel: 'Hide More Projects',
     supporting: '',
     featuredEyebrow: 'Featured case study',
     featuredAside: 'Repo and live link above — full write-up unlocks in Progress.',
