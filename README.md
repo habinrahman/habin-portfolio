@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+# Habin Rahman — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site for Habin Rahman, Backend & AI Systems Engineer. Built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+**Live**: https://habin-portfolio.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What this is
 
-## React Compiler
+A single-page portfolio: hero, verified proof (a real, publicly checkable certificate verification endpoint), featured projects, engineering stack, certifications, and contact — sourced from a real GitHub account and real shipped systems, not placeholder content.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the ESLint configuration
+- React + TypeScript + Vite
+- Tailwind CSS
+- Deployed on Vercel
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Content model
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+All copy, nav, project data, and section content live in one place:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- `src/config/portfolio.config.ts` — site-wide copy, nav, section text
+- `src/config/portfolio.projects.build.ts` — project entries (source of truth for featured + "more projects" listings)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Editing either file is the correct way to update site content — sections read from these configs rather than hardcoding text.
+
+## Local development
+
+```bash
+npm install
+npm run dev       # start dev server
+npm run build     # type-check (tsc -b) + production build
+npm run lint       # eslint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+  components/   # shared UI (command palette, etc.)
+  sections/     # homepage sections (Hero, Projects, VerifiedProof, ...)
+  pages/        # route-level pages
+  config/       # portfolio content — copy + project data
+  data/         # shared types
 ```
