@@ -1,5 +1,4 @@
 import TechStackGrid from '../components/about/TechStackGrid'
-import LiveEngineeringStats from '../components/system/LiveEngineeringStats'
 import { usePortfolioStore } from '../state/usePortfolioStore'
 
 export default function WhatIDoStackSection() {
@@ -25,12 +24,7 @@ export default function WhatIDoStackSection() {
 
         <TechStackGrid />
 
-        <p className="mt-10 text-left text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400 md:mt-12">
-          {w.liveTelemetryLabel}
-        </p>
-        <LiveEngineeringStats compact className="mt-3 opacity-95" />
-
-        <div className="mt-8 max-w-xl text-left md:mt-9">
+        <div className="mt-10 max-w-xl text-left md:mt-12">
           <p className="text-xs font-semibold tracking-tight text-slate-600 md:text-[13px]">
             {w.activeReposLine}: {surfacedRepoCount}+
           </p>

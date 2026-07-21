@@ -27,9 +27,9 @@ export type TechStackEntry = { id: string; label: string }
 
 export const portfolioConfig = {
   meta: {
-    title: 'Habin Rahman | Backend Systems & Cloud Automation Engineer',
+    title: 'Habin Rahman | Backend & AI Systems Engineer',
     description:
-      'Backend systems, TypeScript & Node.js services, AI workflows, and cloud automation — Docker, CI/CD, and production infra.',
+      'Backend & AI Systems Engineer building backend infrastructure, LLM-integrated platforms, and cloud automation — deployed and running in production.',
   },
 
   /** Profile image (place `public/headshot.png` or change `src`) */
@@ -48,12 +48,10 @@ export const portfolioConfig = {
     linkedinAriaLabel: 'LinkedIn',
     links: [
       { label: 'What I do', path: '/', hash: 'what-i-do' },
+      { label: 'Verified', path: '/', hash: 'verified' },
       { label: 'Projects', path: '/', hash: 'projects' },
-      { label: 'Telemetry', path: '/', hash: 'telemetry' },
       { label: 'Engineering', path: '/', hash: 'engineering' },
-      { label: 'AI workflows', path: '/', hash: 'ai-workflow-systems' },
       { label: 'Certs', path: '/', hash: 'certs' },
-      { label: 'Approach', path: '/', hash: 'from-problem-to-system' },
       { label: 'Work with me', path: '/', hash: 'work-with-me' },
       { label: 'Contact', path: '/', hash: 'contact' },
       { label: 'More', path: '/', hash: 'explore' },
@@ -66,7 +64,7 @@ export const portfolioConfig = {
 
   profile: {
     name: 'Habin Rahman',
-    title: 'Backend Systems & Cloud Automation Engineer',
+    title: 'Backend & AI Systems Engineer',
     headline: 'I build systems that run.',
     contact: {
       email: 'habin936@gmail.com',
@@ -83,7 +81,7 @@ export const portfolioConfig = {
     /** Scan-friendly: headline + one supporting line + kicker (no duplicate taglines) */
     lines: {
       h1: 'I build systems that run.',
-      subhead: 'Backends, automation, and cloud operations built to stay up.',
+      subhead: 'Backend infrastructure, automation, and applied AI — built to stay up in production.',
       kicker: '',
     },
     consoleHintLine: '> Explore the system → Ctrl + K',
@@ -104,8 +102,7 @@ export const portfolioConfig = {
 
   whatIDo: {
     heading: 'What I do',
-    body: ['Backend systems that handle real workloads, not demos.'],
-    liveTelemetryLabel: 'Live telemetry',
+    body: ['Backend and AI systems that handle real workloads, not demos.'],
     activeReposLine: 'Active GitHub projects',
     footerLineBeforeGithub: 'Backend, automation, AI —',
     exploreLinkText: 'more in progress & unlocks',
@@ -134,12 +131,20 @@ export const portfolioConfig = {
   },
 
   engineeringStack: {
-    heading: 'Engineering stack & systems',
-    subheading: 'Design, deploy, operate tools support the work.',
+    heading: 'Engineering stack',
+    subheading: 'What each system is built, deployed, and operated with.',
     groups: [
       {
         title: 'Backend',
         items: ['FastAPI services', 'Postgres / Supabase, auth, queues'],
+      },
+      {
+        title: 'AI Systems',
+        items: [
+          'LLM orchestration & agentic workflows',
+          'OpenAI integrations, RAG, vector search',
+          'AI-assisted classification pipelines',
+        ],
       },
       {
         title: 'Infrastructure',
@@ -154,21 +159,6 @@ export const portfolioConfig = {
         title: 'Systems Thinking',
         items: ['Retries, idempotency, failure modes', 'Logging, metrics, pipelines'],
       },
-    ],
-  },
-
-  /** Agent-style AI patterns — LangGraph-class orchestration, retrieval, async pipelines */
-  aiWorkflowSystems: {
-    heading: 'AI workflow systems',
-    subheading:
-      'LLM orchestration, classification, and durable async execution aligned with modern agentic stacks (e.g. LangGraph-style workflows).',
-    items: [
-      'LLM orchestration',
-      'AI-assisted classification',
-      'automated decision pipelines',
-      'async processing workflows',
-      'OpenAI integrations',
-      'vector search & retrieval',
     ],
   },
 
@@ -188,42 +178,11 @@ export const portfolioConfig = {
     unlockHintToast: 'Unlock via Progress & unlocks (level + XP). Opening it.',
   },
 
-  liveTelemetry: {
-    title: 'Live system telemetry',
-    subtitle: 'Deploy style logs and health representative, not a tenant.',
-    /** Shown above the terminal grid — sets intent before the animated logs */
-    logsIntro: 'Live system telemetry  representative of real service workloads.',
-    disclaimer: 'Sample output; typical ops monitoring view.',
-    terminalTitle: 'Terminal',
-    serverTitle: 'Server output',
-    statusTitle: 'System status',
-    terminalBody: `$ git push origin main
-Enumerating objects: 42, done.
-Delta compression using up to 8 threads
-To github.com:org/api-service.git
-   a1b2c3d..e4f5g6h  main -> main
-
-$ docker compose -f docker-compose.prod.yml build api
-[+] Building 24.3s (14/14) FINISHED
- => exporting to image                                    2.1s
- => naming to docker.io/org/api:1.4.2                     0.0s
-$ `,
-    statusRows: [
-      { label: 'api', status: 'healthy', detail: 'p95 42ms' },
-      { label: 'worker', status: 'healthy', detail: 'queue depth 1' },
-      { label: 'scheduler', status: 'healthy', detail: 'last tick 12s ago' },
-      { label: 'postgres', status: 'healthy', detail: 'replication lag 0' },
-    ],
-    /** Timestamps are computed as now − offset (reads like recent log tail) */
-    runtimeLogEntries: [
-      { offsetMs: 17_000, message: 'INFO  worker-2 job=digest_emails status=started' },
-      { offsetMs: 12_000, message: 'INFO  http  GET /healthz 200 3ms' },
-      { offsetMs: 9000, message: 'INFO  db      pool=primary active=6 idle=4' },
-      { offsetMs: 4000, message: 'WARN  queue   depth=2 lag_ms=840 threshold=1000' },
-      { offsetMs: 0, message: 'INFO  worker-2 job=digest_emails status=completed duration=17.2s' },
-    ] as const,
-    /** Appended every tick with current time — reads like a live scrape line */
-    liveTailMessage: 'INFO  metrics  scrape_interval=15s  targets=4  up=4',
+  /** Standalone proof section — real, verifiable, placed high on the homepage */
+  verifiedProof: {
+    eyebrow: 'Verified, not claimed',
+    heading: 'A credential you can check yourself.',
+    proof: certificateLiveVerificationProof,
   },
 
   /** Section copy + proof blocks (credentials list is `certifications` below) */
@@ -327,9 +286,9 @@ $ `,
   },
 
   workWithMe: {
-    heading: 'For teams that need systems that stay up.',
+    heading: 'For teams shipping AI-integrated systems.',
     bullets: ['Real load, not demo data', 'Automation instead of manual loops', 'Always-on operations'],
-    ctaLead: "If you're building something real let's talk.\nSystems should run.",
+    ctaLead: "If you're building something real, let's talk.",
     ctaBold: '',
     button: 'Get in touch',
   },
@@ -344,7 +303,7 @@ $ `,
   },
 
   closing: {
-    lines: ["I don't build for portfolios.", 'I build systems that run.'],
+    lines: ['Not a demo. Not a tutorial project.', 'Production systems — including the AI ones.'],
   },
 
   explore: {
@@ -380,7 +339,7 @@ $ `,
   },
 
   footer: {
-    line: 'Habin Rahman · Backend & cloud automation · systems that stay up',
+    line: 'Habin Rahman · Backend & AI Systems Engineer · backend, automation, applied AI',
   },
 
   /** Command palette “why hire” full-screen pitch */

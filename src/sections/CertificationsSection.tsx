@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import CertificateImage from '../components/credentials/CertificateImage'
 import CertificationModal from '../components/credentials/CertificationModal'
-import VerificationProofSection from '../components/projects/VerificationProofSection'
 import type { CertificationItem } from '../config/portfolio.config'
 import { usePortfolioStore } from '../state/usePortfolioStore'
 import { springSnappy } from '../motion/micro'
@@ -132,10 +131,6 @@ export default function CertificationsSection({ preview = false }: Props) {
               </li>
             ))}
           </ul>
-        </div>
-
-        <div className="mx-auto mt-10 max-w-2xl md:mt-12">
-          <VerificationProofSection proof={section.verificationProof} compact />
         </div>
 
         <p className="mx-auto mt-10 max-w-2xl text-left text-base font-bold leading-snug tracking-tight text-slate-950 md:mt-12 md:text-lg">

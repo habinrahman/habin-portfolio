@@ -4,7 +4,6 @@ import type { Project } from '../data/types'
 import { usePortfolioProgress } from '../state/usePortfolioProgress'
 import { usePortfolioStore } from '../state/usePortfolioStore'
 import ProjectModal from '../components/projects/ProjectModal'
-import { LiveSystemPulse } from '../components/system/LiveEngineeringStats'
 import { scrollElementIntoView } from '../utils/scrollToId'
 import { ProjectCard } from '../components/projects/ProjectShowcaseCards'
 
@@ -94,7 +93,6 @@ export default function ProjectsSection({ exploreDetailsRef }: Props) {
         ) : null}
         <h2 className={ps.eyebrow?.trim() ? 'mt-3 heading-projects' : 'heading-projects'}>{featuredHeading}</h2>
         <p className="mt-5 max-w-2xl text-lg font-medium text-slate-800 md:mt-6 md:text-xl">{featuredSubtitle}</p>
-        <LiveSystemPulse className="mt-5" />
         {ps.supporting?.trim() ? (
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 md:mt-5 md:text-[15px]">{ps.supporting}</p>
         ) : null}

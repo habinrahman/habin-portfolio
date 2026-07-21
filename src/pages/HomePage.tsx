@@ -14,13 +14,12 @@ import { useCommandPaletteHotkeys } from '../hooks/useCommandPaletteHotkeys'
 import AuthorityStripSection from '../sections/AuthorityStripSection'
 import CertificationsSection from '../sections/CertificationsSection'
 import ContactSection from '../sections/ContactSection'
-import AiWorkflowSystemsSection from '../sections/AiWorkflowSystemsSection'
 import EngineeringStackSystemsSection from '../sections/EngineeringStackSystemsSection'
 import ExploreWorkSection from '../sections/ExploreWorkSection'
 import HeroSection from '../sections/HeroSection'
-import LiveSystemTelemetrySection from '../sections/LiveSystemTelemetrySection'
 import ProblemToSystemSection from '../sections/ProblemToSystemSection'
 import ProjectsSection from '../sections/ProjectsSection'
+import VerifiedProofSection from '../sections/VerifiedProofSection'
 import WhatIDoStackSection from '../sections/WhatIDoStackSection'
 import WorkWithMeSection from '../sections/WorkWithMeSection'
 import { useCommandPaletteHints } from '../context/CommandPaletteHintsContext'
@@ -58,12 +57,11 @@ export default function HomePage() {
 
           <HeroSection onOpenCommandPalette={openPalette} />
           <AuthorityStripSection />
+          <VerifiedProofSection />
           <WhatIDoStackSection />
-          <ProblemToSystemSection />
           <ProjectsSection exploreDetailsRef={exploreRef} />
-          <LiveSystemTelemetrySection />
+          <ProblemToSystemSection />
           <EngineeringStackSystemsSection />
-          <AiWorkflowSystemsSection />
           <CertificationsSection preview />
           <WorkWithMeSection />
           <ContactSection />
