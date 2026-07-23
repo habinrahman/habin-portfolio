@@ -226,6 +226,12 @@ export function ProjectCard({ project, unlocked, onViewProject }: CardCallbacks 
             Repository: <span className="text-slate-700">{slug}</span>
           </p>
 
+          {project.provesCapability ? (
+            <p className="mt-2 text-[11px] font-semibold leading-snug text-violet-900 md:text-xs">
+              {project.provesCapability}
+            </p>
+          ) : null}
+
           <GithubLiveRow
             project={project}
             unlocked={unlocked}

@@ -17,18 +17,24 @@ export function projectSystemSignals(project: Project) {
   const type = projectTypeLabel(project)
   let running = project.status !== 'In Progress'
   let productionMode = running
+  let isDemo = false
   if (project.lifecycleStatus === 'running') {
     running = true
     productionMode = false
   } else if (project.lifecycleStatus === 'production') {
     running = true
     productionMode = true
+  } else if (project.lifecycleStatus === 'demo') {
+    running = true
+    productionMode = false
+    isDemo = true
   } else {
     productionMode = running
   }
   return {
     status: running ? 'Running' : 'Building',
-    mode: productionMode ? 'Production' : 'Development',
+    mode: isDemo ? 'Demo' : productionMode ? 'Production' : 'Development',
+    isDemo,
     type,
   }
 }
@@ -48,7 +54,7 @@ type Props = { project: Project; className?: string; hideSystemType?: boolean }
 
 /** Compact live-system strip: Running · Production · type — minimal, not flashy */
 export default function ProjectSystemSignals({ project, className = '', hideSystemType = false }: Props) {
-  const { status, mode, type } = projectSystemSignals(project)
+  const { status, mode, type, isDemo } = projectSystemSignals(project)
   const isRunning = status === 'Running'
   const isProduction = mode === 'Production'
 
@@ -95,12 +101,14 @@ export default function ProjectSystemSignals({ project, className = '', hideSyst
             animate={{ opacity: [1, 0.82, 1] }}
             transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
           />
+        ) : isDemo ? (
+          <span className="h-2 w-2 shrink-0 rounded-full bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.45)]" aria-hidden />
         ) : (
           <span className="h-2 w-2 shrink-0 rounded-full bg-slate-300" aria-hidden />
         )}
         <span className="tabular-nums tracking-tight">
           <span className="mr-1" aria-hidden>
-            🔵
+            {isDemo ? '🟡' : '🔵'}
           </span>
           {mode}
         </span>

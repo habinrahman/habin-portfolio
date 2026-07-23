@@ -125,6 +125,22 @@ export default function ProjectDeepDive({ project, className, compact }: Props) 
                   ))}
                 </ul>
               </section>
+
+              {project.engineeringLessons?.length ? (
+                <section>
+                  <h4 className={cn('text-xs font-bold uppercase tracking-wider text-violet-700', compact && 'text-[10px]')}>
+                    Engineering lessons
+                  </h4>
+                  <ul className="mt-2 space-y-1.5 text-sm text-slate-600 leading-relaxed">
+                    {project.engineeringLessons.map((line) => (
+                      <li key={line} className="flex gap-2">
+                        <span className="text-slate-400 shrink-0">→</span>
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
             </div>
           </motion.div>
         ) : null}

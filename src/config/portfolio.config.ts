@@ -81,7 +81,8 @@ export const portfolioConfig = {
     /** Scan-friendly: headline + one supporting line + kicker (no duplicate taglines) */
     lines: {
       h1: 'I build systems that run.',
-      subhead: 'Backend infrastructure, automation, and applied AI — built to stay up in production.',
+      subhead:
+        'Backend systems, distributed architecture, and applied AI — designed with explicit state, guarded permissions, and swappable AI providers.',
       kicker: '',
     },
     consoleHintLine: '> Explore the system → Ctrl + K',
@@ -157,7 +158,11 @@ export const portfolioConfig = {
       },
       {
         title: 'Systems Thinking',
-        items: ['Retries, idempotency, failure modes', 'Logging, metrics, pipelines'],
+        items: [
+          'Retries, idempotency, failure modes',
+          'Logging, metrics, pipelines',
+          'Provider-swappable facades & deep modules (single seam behind AI providers, guarded state transitions)',
+        ],
       },
     ],
   },
@@ -166,7 +171,7 @@ export const portfolioConfig = {
     eyebrow: '',
     featuredHeading: 'Featured Systems',
     featuredSubtitle:
-      'Production-grade platforms and automation systems engineered for real-world impact.',
+      'Four systems, four distinct engineering capabilities — each proving something the others don\'t.',
     moreHeading: 'More Projects',
     moreSubtitle: 'Additional projects, experiments, and supporting engineering work.',
     moreCollapsedLabel: 'Show More Projects',
@@ -174,7 +179,7 @@ export const portfolioConfig = {
     supporting: '',
     featuredEyebrow: 'Featured case study',
     featuredAside: 'Repo and live link above — full write-up unlocks in Progress.',
-    featuredProjectId: 'mycareer-ai',
+    featuredProjectId: 'foundry',
     unlockHintToast: 'Unlock via Progress & unlocks (level + XP). Opening it.',
   },
 

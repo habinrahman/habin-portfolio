@@ -88,6 +88,65 @@ function projectFromBuild(b: PortfolioProjectBuild): Project {
 export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
   {
     config: {
+      id: 'foundry',
+      title: 'Foundry',
+      description:
+        'AI hiring intelligence platform - structured resume analysis, provider-swappable LLM architecture, and locale-aware AI generation behind a typed API boundary.',
+      tech: [
+        'Next.js',
+        'React',
+        'TypeScript',
+        'Gemini',
+        'Zod',
+        'Vercel',
+      ],
+      github: 'https://github.com/habinrahman/Foundry',
+      live: 'https://foundrytamm.vercel.app/',
+      status: 'running',
+      featured: true,
+      type: 'AI Systems Architecture (Demo)',
+      problem:
+        'Recruiters scan resumes inconsistently under time pressure; LLM output that is not schema-validated cannot be trusted as structured hiring evidence.',
+      solution:
+        'Built an AI hiring pipeline where every LLM call is a typed contract: Zod-validated request/response boundaries, a provider-swappable facade (Gemini today, OpenAI stub proven out), and locale as a first-class prompt input rather than a post-hoc translation step.',
+      impact:
+        'Demonstrates LLM-as-system-component architecture - not a chatbot wrapper - with structured output the rest of the system can rely on.',
+      features: [
+        'Zod-validated request/response boundary on every AI call',
+        'Provider facade (Gemini + OpenAI stub) swappable without touching callers',
+        'Locale-aware prompt generation with explicit no-silent-retranslation guarantee',
+      ],
+    },
+    merge: {
+      displayTitle: 'Foundry - AI Hiring Intelligence',
+      repoSlug: 'Foundry',
+      tagline:
+        'AI hiring intelligence platform built around typed LLM contracts, not a chatbot wrapper.',
+      provesCapability: 'Proves: AI systems architecture — LLM as a schema-bound system component.',
+      category: 'Backend',
+      status: 'Demo',
+      lifecycleStatus: 'demo',
+      levelRequired: 2,
+      xpReward: 300,
+      impact: [
+        { metric: 'Architecture', description: 'Every AI call is Zod-validated at both request and response boundary.' },
+        { metric: 'Extensibility', description: 'Provider swap (Gemini to OpenAI) proven behind one facade, no caller changes.' },
+      ],
+      engineeringDecisions: [
+        'Structured output via schema mode instead of free-form parsing, for reliability under LLM drift.',
+        'Never silently regenerate AI output when the UI locale changes - explicit "Regenerate in current language" action instead, so a recruiter\'s prior judgment is never rewritten without consent.',
+      ],
+      tradeoffs: [
+        'Demo scope: in-memory application store, no auth, no persistence - this is a demo, not a claim of production traffic.',
+      ],
+      architectureOverview: ['UI -> AI Context -> Prompt Builder -> Gemini -> Zod Parser -> Structured Output'],
+      engineeringLessons: [
+        'Structured outputs alone aren\'t sufficient - schema validation and an explicit regeneration rule were needed to avoid silent correctness regressions when a recruiter switches the UI language mid-review.',
+      ],
+    },
+  },
+  {
+    config: {
       id: 'microdegree-hub',
       title: 'MicroDegree Hub',
       description:
@@ -124,6 +183,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       displayTitle: 'MicroDegree Hub',
       repoSlug: 'Hub',
       tagline: 'Enterprise operations platform for learning, credentials, and internal workflow automation.',
+      provesCapability: 'Proves: production backend system design — RBAC, guarded state transitions, real CI.',
       category: 'Systems',
       levelRequired: 2,
       xpReward: 280,
@@ -131,9 +191,15 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
         { metric: 'Operations', description: 'Centralizes platform workflows into one system.' },
         { metric: 'Reliability', description: 'Reduces manual handoffs with durable backend flows.' },
       ],
-      engineeringDecisions: ['Structured operations model', 'Automation-ready backend boundaries'],
+      engineeringDecisions: [
+        'Granular RBAC policy table (9 roles, 40+ resource-scoped actions) as the single source of truth for authorization.',
+        'Optimistic-concurrency-guarded state transitions shared across batch transfers and enrollment pauses, with audit logging built into the shared plumbing.',
+      ],
       tradeoffs: ['Internal operational scope over public demo polish.'],
-      architectureOverview: ['Admin UI -> API -> Database -> Workers'],
+      architectureOverview: ['Admin UI -> API -> Guarded Transition -> Database -> Audit Log -> Workers'],
+      engineeringLessons: [
+        'Duplicated "approve/reject a pending X" logic across batch transfers and enrollment pauses was generalized into one guarded-transition module, eliminating repeated code while preserving auditability and the optimistic-concurrency guarantee everywhere it\'s used.',
+      ],
     },
   },
   {
@@ -145,8 +211,8 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       tech: ['Python', 'Kubernetes', 'Gemini', 'PostgreSQL', 'Docker', 'background workers'],
       github: 'https://github.com/habinrahman/ollive-inference-platform',
       live: '',
-      status: 'production',
-      featured: false,
+      status: 'running',
+      featured: true,
       type: 'AI Observability & Telemetry Platform',
       problem:
         'AI systems need visibility into inference behavior, failures, latency, and operational health beyond simple request logs.',
@@ -165,6 +231,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       repoSlug: 'ollive-inference-platform',
       tagline:
         'AI observability and telemetry for inference workloads, runtime signals, and operational health.',
+      provesCapability: 'Proves: AI operations — instrumenting and observing AI systems after they run, not just building them.',
       category: 'Systems',
       levelRequired: 3,
       xpReward: 300,
@@ -172,9 +239,15 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
         { metric: 'Observability', description: 'Surfaces inference health and runtime behavior.' },
         { metric: 'Operations', description: 'Supports debugging and monitoring of AI workloads.' },
       ],
-      engineeringDecisions: ['Structured telemetry events', 'Operational signal-first UI model'],
+      engineeringDecisions: [
+        'Structured telemetry event schema (trace_id, correlation_id, latency, token usage, retry count) instead of raw log lines.',
+        'Operational signal-first UI model over a general-purpose dashboard.',
+      ],
       tradeoffs: ['Telemetry depth prioritized over broad product surface.'],
       architectureOverview: ['Client -> API -> Telemetry Store -> Dashboard'],
+      engineeringLessons: [
+        'Telemetry without correlation identifiers is hard to debug across distributed inference requests, so trace_id and correlation_id became first-class fields on every event, not an afterthought bolted onto logging.',
+      ],
     },
   },
   {
@@ -256,7 +329,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       github: 'https://github.com/habinrahman/mycareer-ai',
       live: '',
       status: 'production',
-      featured: true,
+      featured: false,
       type: 'AI-Powered Career Platform',
       problem:
         'Job seekers lack personalized, data-driven insights to optimize their resumes and career prospects.',
@@ -278,7 +351,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       levelRequired: 2,
       xpReward: 280,
       tagline:
-        'Resume intelligence, mentorship, and career reports powered by generative AI and RAG.',
+        'Career coaching counterpart to Foundry: helps a candidate improve, not a recruiter decide.',
     },
   },
   {
@@ -304,7 +377,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       github: 'https://github.com/habinrahman/microdegree-outreach-platform',
       live: 'https://outreach.microdegree.work/',
       status: 'production',
-      featured: true,
+      featured: false,
       type: 'Automation Infrastructure Platform',
       problem: 'Placement teams lose visibility when outreach is fragmented across channels and manual spreadsheets.',
       solution:
@@ -358,6 +431,7 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
     merge: {
       displayTitle: 'Certificate Verification System',
       repoSlug: 'certificate-verification',
+      provesCapability: 'Proves: trust and verification — the one claim on this site a stranger can check themselves.',
       demo: 'https://certificate.microdegree.in/',
       demoLabel: 'Demo',
       demoReferenceNote: 'Public verification',
@@ -380,6 +454,9 @@ export const PORTFOLIO_PROJECT_BUILDS: PortfolioProjectBuild[] = [
       ],
       tradeoffs: ['External Supabase dependency for core data.'],
       architectureOverview: ['Client -> FastAPI -> Supabase'],
+      engineeringLessons: [
+        'Simplicity increased trust more than additional architecture would have: a publicly verifiable endpoint proved more valuable than adding more moving parts to the verification path.',
+      ],
       levelRequired: 2,
       xpReward: 220,
     },

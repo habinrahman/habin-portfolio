@@ -2,9 +2,8 @@ import TechStackGrid from '../components/about/TechStackGrid'
 import { usePortfolioStore } from '../state/usePortfolioStore'
 
 export default function WhatIDoStackSection() {
-  const { portfolio, projects } = usePortfolioStore()
+  const { portfolio } = usePortfolioStore()
   const { whatIDo: w, profile } = portfolio
-  const surfacedRepoCount = projects.length
   return (
     <section
       id="what-i-do"
@@ -25,10 +24,7 @@ export default function WhatIDoStackSection() {
         <TechStackGrid />
 
         <div className="mt-10 max-w-xl text-left md:mt-12">
-          <p className="text-xs font-semibold tracking-tight text-slate-600 md:text-[13px]">
-            {w.activeReposLine}: {surfacedRepoCount}+
-          </p>
-          <p className="mt-1.5 text-[11px] leading-relaxed text-slate-500 md:text-xs">
+          <p className="text-[11px] leading-relaxed text-slate-500 md:text-xs">
             {w.footerLineBeforeGithub}{' '}
             <a href="#explore" className="font-medium text-violet-800 underline-offset-2 hover:text-violet-950 hover:underline">
               {w.exploreLinkText}
